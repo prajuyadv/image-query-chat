@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import ImageUploader from "./components/ImageUploader";
 import QuestionInput from "./components/QuestionInput";
-import ErrorMessages from "./components/ErrorMessages";
+import ErrorMessage from "./components/ErrorMessage";
 import ResponsesList from "./components/ResponsesList";
 import { fileToObjectURL } from "./utils/fileUtils";
 import { mockBatchAnalyze } from "./services/mockLLM";
@@ -66,7 +66,7 @@ export default function App() {
           onAsk={onAsk}
           isLoading={isLoading}
         />
-        <ErrorMessages errors={errors} />
+        <ErrorMessage errors={errors} />
       </section>
       <section>
         <ResponsesList files={files} previews={previews} responses={responses} />
