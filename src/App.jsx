@@ -49,7 +49,8 @@ export default function App() {
       const answers = await mockBatchAnalyze(question, files);
       setResponses(answers);
     } catch (error) {
-      pushError("Error analyzing images.",error);
+      pushError("Error analyzing images.");
+      console.log("onAsk",error)
     } finally {
       setIsLoading(false);
     }
