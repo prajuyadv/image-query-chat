@@ -5,6 +5,7 @@ import ErrorMessage from "./components/ErrorMessage";
 import ResponsesList from "./components/ResponsesList";
 import { fileToObjectURL } from "./utils/fileUtils";
 import { mockBatchAnalyze } from "./services/mockLLM";
+import "./App.css"; // Updated styles
 
 export default function App() {
   const [files, setFiles] = useState([]);
@@ -50,15 +51,16 @@ export default function App() {
       setResponses(answers);
     } catch (error) {
       pushError("Error analyzing images.");
-      console.log("onAsk",error)
+      console.error("onAsk", error);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "320px 1fr", gap: 16, padding: 20 }}>
-      <section>
+    <div className="app-container">
+      {/* Left Panel */}
+      <section className="left-panel">
         <ImageUploader files={files} onPick={onPick} onRemove={onRemove} previews={previews} />
         <QuestionInput
           question={question}
@@ -68,7 +70,9 @@ export default function App() {
         />
         <ErrorMessage errors={errors} />
       </section>
-      <section>
+
+      {/* Right Panel */}
+      <section className="right-panel">
         <ResponsesList files={files} previews={previews} responses={responses} />
       </section>
     </div>
