@@ -58,23 +58,38 @@ export default function App() {
   };
 
   return (
-    <div className="app-container">
-      {/* Left Panel */}
-      <section className="left-panel">
-        <ImageUploader files={files} onPick={onPick} onRemove={onRemove} previews={previews} />
-        <QuestionInput
-          question={question}
-          setQuestion={setQuestion}
-          onAsk={onAsk}
-          isLoading={isLoading}
-        />
-        <ErrorMessage errors={errors} />
-      </section>
+    <div className="app-wrapper">
+      {/* Header */}
+      <header className="header">
+        <h1 className="header-title">🖼️ Image Query Bot</h1>
+        <p className="header-subtitle">
+          Upload images, ask a question, and get instant AI-powered responses.
+        </p>
+      </header>
 
-      {/* Right Panel */}
-      <section className="right-panel">
-        <ResponsesList files={files} previews={previews} responses={responses} />
-      </section>
+      <div className="app-container">
+        {/* Left Panel */}
+        <section className="left-panel">
+          <ImageUploader
+            files={files}
+            onPick={onPick}
+            onRemove={onRemove}
+            previews={previews}
+          />
+          <QuestionInput
+            question={question}
+            setQuestion={setQuestion}
+            onAsk={onAsk}
+            isLoading={isLoading}
+          />
+          <ErrorMessage errors={errors} />
+        </section>
+
+        {/* Right Panel */}
+        <section className="right-panel">
+          <ResponsesList files={files} previews={previews} responses={responses} />
+        </section>
+      </div>
     </div>
   );
 }
